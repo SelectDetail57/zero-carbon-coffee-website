@@ -1,0 +1,689 @@
+/* ==========================================================================
+   Zero Carbon Coffee - Base Stylesheet
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   CSS Custom Properties (Brand Colors - Placeholder Values)
+   -------------------------------------------------------------------------- */
+:root {
+    /* Primary Colors */
+    --color-primary: #2d5016;       /* Deep green - adjust to brand */
+    --color-primary-dark: #1a3009;
+    --color-primary-light: #4a7a2a;
+
+    /* Secondary Colors */
+    --color-secondary: #8b4513;     /* Coffee brown */
+    --color-secondary-dark: #5c2e0d;
+    --color-secondary-light: #a0522d;
+
+    /* Neutral Colors */
+    --color-white: #ffffff;
+    --color-off-white: #f8f9fa;
+    --color-light-gray: #e9ecef;
+    --color-gray: #6c757d;
+    --color-dark-gray: #343a40;
+    --color-black: #212529;
+
+    /* Accent Colors */
+    --color-success: #28a745;
+    --color-warning: #ffc107;
+    --color-error: #dc3545;
+
+    /* Typography */
+    --font-primary: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --font-heading: var(--font-primary);
+
+    /* Font Sizes */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    --space-4xl: 6rem;
+
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+    /* Container */
+    --container-max: 1200px;
+    --container-padding: var(--space-lg);
+}
+
+/* --------------------------------------------------------------------------
+   Reset / Normalize
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-black);
+    background-color: var(--color-white);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+ul {
+    list-style: none;
+}
+
+/* --------------------------------------------------------------------------
+   Typography
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-base); }
+
+p {
+    margin-bottom: var(--space-md);
+}
+
+/* --------------------------------------------------------------------------
+   Layout Utilities
+   -------------------------------------------------------------------------- */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+.btn {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--text-base);
+    font-weight: 600;
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    color: var(--color-white);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
+   Header / Navigation
+   -------------------------------------------------------------------------- */
+.site-header {
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--space-md) var(--container-padding);
+}
+
+.logo {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.nav-links a {
+    color: var(--color-dark-gray);
+    font-weight: 500;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Sections (General)
+   -------------------------------------------------------------------------- */
+section {
+    padding: var(--space-4xl) 0;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section
+   -------------------------------------------------------------------------- */
+.hero {
+    background-color: var(--color-off-white);
+    text-align: center;
+    padding: var(--space-4xl) 0;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6));
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: var(--text-5xl);
+    margin-bottom: var(--space-md);
+    color: var(--color-white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subheading {
+    font-size: var(--text-xl);
+    color: var(--color-white);
+    margin-bottom: var(--space-xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   Page Intro
+   -------------------------------------------------------------------------- */
+.page-intro {
+    background-color: var(--color-off-white);
+    text-align: center;
+    padding: var(--space-3xl) 0;
+}
+
+.page-intro h1 {
+    margin-bottom: var(--space-md);
+}
+
+.intro-text {
+    font-size: var(--text-lg);
+    color: var(--color-gray);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Grid Layouts
+   -------------------------------------------------------------------------- */
+.problem-grid,
+.audience-grid,
+.steps-grid,
+.features-grid,
+.handle-grid,
+.outcomes-grid,
+.tiers-grid,
+.included-grid,
+.examples-grid {
+    display: grid;
+    gap: var(--space-xl);
+}
+
+/* 3 column grids */
+.problem-grid,
+.audience-grid,
+.outcomes-grid,
+.tiers-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* 2 column grid */
+.stakes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+}
+
+/* 4 column grids */
+.steps-grid,
+.examples-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* 6 column / 2-3 row grids */
+.features-grid,
+.handle-grid,
+.included-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* --------------------------------------------------------------------------
+   Cards
+   -------------------------------------------------------------------------- */
+.problem-card,
+.audience-card,
+.feature-card,
+.tier-card,
+.included-item,
+.example-card,
+.outcome,
+.handle-item {
+    background-color: var(--color-white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.problem-card:hover,
+.audience-card:hover,
+.feature-card:hover,
+.tier-card:hover,
+.included-item:hover,
+.example-card:hover,
+.outcome:hover,
+.handle-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.tier-card.featured {
+    border: 2px solid var(--color-primary);
+    transform: scale(1.02);
+}
+
+/* Card Images */
+.card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+}
+
+/* Tier Card Styling */
+.tier-range {
+    font-size: var(--text-sm);
+    color: var(--color-gray);
+    margin-bottom: var(--space-xs);
+}
+
+.tier-share {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+}
+
+.tier-card ul {
+    text-align: left;
+    padding-left: var(--space-md);
+}
+
+.tier-card li {
+    position: relative;
+    padding-left: var(--space-md);
+    margin-bottom: var(--space-sm);
+    color: var(--color-dark-gray);
+}
+
+.tier-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Steps
+   -------------------------------------------------------------------------- */
+.step {
+    text-align: center;
+    padding: var(--space-xl);
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-md);
+}
+
+/* --------------------------------------------------------------------------
+   Section Images
+   -------------------------------------------------------------------------- */
+.section-image {
+    max-width: 500px;
+    width: 100%;
+    margin: var(--space-xl) auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* --------------------------------------------------------------------------
+   Solution Features
+   -------------------------------------------------------------------------- */
+.solution-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+}
+
+.feature {
+    text-align: center;
+    padding: var(--space-lg);
+}
+
+/* --------------------------------------------------------------------------
+   Stakes Section
+   -------------------------------------------------------------------------- */
+.stakes-failure,
+.stakes-success {
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+}
+
+.stakes-failure {
+    background-color: #fee2e2;
+}
+
+.stakes-success {
+    background-color: #dcfce7;
+}
+
+/* --------------------------------------------------------------------------
+   Pricing Highlights
+   -------------------------------------------------------------------------- */
+.pricing-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+}
+
+.highlight {
+    text-align: center;
+    padding: var(--space-lg);
+    background-color: var(--color-off-white);
+    border-radius: var(--radius-lg);
+}
+
+/* --------------------------------------------------------------------------
+   Revenue Examples
+   -------------------------------------------------------------------------- */
+.example-card {
+    text-align: center;
+}
+
+.monthly-revenue {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Solution Section
+   -------------------------------------------------------------------------- */
+.solution {
+    text-align: center;
+}
+
+.solution > .container > p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--color-dark-gray);
+}
+
+/* --------------------------------------------------------------------------
+   FAQ
+   -------------------------------------------------------------------------- */
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-light-gray);
+}
+
+.faq-item h3 {
+    margin-bottom: var(--space-sm);
+}
+
+/* --------------------------------------------------------------------------
+   CTA Section
+   -------------------------------------------------------------------------- */
+.cta {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+}
+
+.cta h2 {
+    color: var(--color-white);
+}
+
+.cta p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--space-xl);
+}
+
+.cta .btn-primary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-white);
+}
+
+.cta .btn-primary:hover {
+    background-color: var(--color-off-white);
+}
+
+.cta .btn-secondary {
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.cta .btn-secondary:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+}
+
+.cta .btn {
+    margin: 0 var(--space-sm);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+    background-color: var(--color-dark-gray);
+    color: var(--color-white);
+    padding: var(--space-3xl) 0 var(--space-xl);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.footer-brand .logo {
+    color: var(--color-white);
+    margin-bottom: var(--space-sm);
+}
+
+.footer-brand p {
+    color: var(--color-gray);
+}
+
+.footer-nav ul {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.footer-nav a {
+    color: var(--color-light-gray);
+}
+
+.footer-nav a:hover {
+    color: var(--color-white);
+}
+
+.copyright {
+    text-align: center;
+    color: var(--color-gray);
+    font-size: var(--text-sm);
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    :root {
+        --text-4xl: 2rem;
+        --text-5xl: 2.5rem;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .nav-links {
+        gap: var(--space-md);
+    }
+
+    section {
+        padding: var(--space-2xl) 0;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-md);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --text-3xl: 1.5rem;
+        --text-4xl: 1.75rem;
+        --text-5xl: 2rem;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: var(--space-sm);
+    }
+}
